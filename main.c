@@ -71,6 +71,13 @@ int main()
 
         for(int i = 0; i < 6; i++)
         {
+            //Empeche de rentrer des chiffres et caractères spéciaux
+            if ((guess < 65 || guess > 122) || (guess > 90 && guess < 97 ))
+            {
+                 printf("Veuillez rentrer une lettre !\n\n");
+                 break;
+            }
+            
             //Empeche de perdre un essai en remettant une bonne lettre
             if (guess == hideWord[i])
             {
@@ -86,7 +93,7 @@ int main()
             }
 
             //Perd un essai si la lettre est incorrecte
-            if(guess != secretWord[i] && secretWord[i] == '\0')
+            if(guess != secretWord[i] && i == (strlen(secretWord) - 1))
                 try--;
         }
         if (strcmp(hideWord,secretWord) == 0)
